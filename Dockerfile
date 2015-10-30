@@ -12,7 +12,7 @@ COPY config/database.SAMPLE.yml config/database.yml
 
 # thanks Debian/Ubuntu for putting Magick-config in the weirdest place ever
 ENV PATH $PATH:/usr/lib/x86_64-linux-gnu/ImageMagick-6.8.9/bin-Q16/
-RUN bundle install --verbose
+RUN bundle install
 
 ADD . .
 
