@@ -8,6 +8,8 @@ WORKDIR /usr/src/app
 
 ONBUILD COPY Gemfile /usr/src/app/
 ONBUILD COPY Gemfile.lock /usr/src/app/
+ONBUILD COPY config/database.SAMPLE.yml /usr/src/app/config/database.yml
+
 # thanks Debian/Ubuntu for putting Magick-config in the weirdest place ever
 ONBUILD RUN PATH=$PATH:/usr/lib/x86_64-linux-gnu/ImageMagick-6.8.9/bin-Q16/ bundle install
 
