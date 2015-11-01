@@ -9,21 +9,7 @@ WORKDIR /wheelmap
 ADD Gemfile Gemfile
 ADD Gemfile.lock Gemfile.lock
 
-RUN mkdir -p config
-#COPY config/database.SAMPLE.yml config/database.yml
-# Maybe we should have config/database.DOCKER.yml instead?
-RUN echo "\n\
-development:\n\
-  adapter: mysql2spatial\n\
-  encoding: utf8\n\
-  reconnect: false\n\
-  database: wheelmap_development\n\
-  pool: 5\n\
-  username: root\n\
-  password:\n\
-  host: db\n\
-  port: 3306" >> config/database.yml
-
+COPY config/database.DOCKER.yml config/database.yml
 COPY config/open_street_map.SAMPLE.yml config/open_street_map.yml
 
 # thanks Debian/Ubuntu for putting Magick-config in the weirdest place ever
