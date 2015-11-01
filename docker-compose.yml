@@ -1,6 +1,9 @@
 db:
   image: mysql:latest
-  ports: 3306:3306
+  ports: 
+   - "3306:3306"
+
 wheelmap:
   build: .
-
+  links:
+   - db
