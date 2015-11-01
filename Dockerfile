@@ -19,6 +19,9 @@ ENV PATH $PATH:/usr/lib/x86_64-linux-gnu/ImageMagick-6.8.9/bin-Q16/
 RUN bundle install
 
 ADD . .
+
+# allow rake to work against our DB container
+RUN echo "ActiveRecord::Tasks::DatabaseTasks::LOCAL_HOSTS << db" >> config/application.rb
 RUN bundle exec rake db:create:all db:migrate db:seed
 
 
