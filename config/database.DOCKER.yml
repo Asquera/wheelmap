@@ -5,7 +5,7 @@ development:
   database: wheelmap_development
   pool: 2
   username: root
-  password:
+  password: docker
   host: db
   port: 3306
 
