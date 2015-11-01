@@ -10,6 +10,7 @@ This Repository is the source code of the website [Wheelmap.org](http://wheelmap
 
 ### Requirements
 
+### OS X
 If you are working on a Mac, please install [Homebrew](http://brew.sh/).
 
 Then install the following required tools:
@@ -80,6 +81,36 @@ Finally startup a local rails server
     bundle exec rails server
 
 And visit the website in your browser: http://0.0.0.0:3000
+
+
+### Linux
+
+#### Docker 
+
+We now have a [Docker](https://www.docker.com/) container set up for development work
+
+* First, [install Docker](https://docs.docker.com/) using the guide for your distro
+* Make sure your user account is added to the `docker` group with `sudo adduser $USER docker`
+* Then, install `docker-compose`:
+
+```bash
+mkdir -p ~/bin
+echo PATH=$PATH:$HOME/bin >> ~/.bashrc
+source ~/.bashrc
+
+curl -L https://github.com/docker/compose/releases/download/1.5.0rc3/docker-compose-`uname -s`-`uname -m` > ~/bin/docker-compose
+chmod +x ~/bin/docker-compose
+```
+
+* Now, clone this repository and build your containers
+
+```bash
+git clone https://github.com/sozialhelden/wheelmap
+cd wheelmap && docker-compose up
+```
+
+* The first build can take some time, but afterwards you should be able to visit localhost:3000 and see WheelMap running!
+
 
 ## License
 
