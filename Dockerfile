@@ -20,8 +20,7 @@ development:
   username: root
   password:
   host: db
-  port: 3306
-' >> config/database.yml
+  port: 3306' >> config/database.yml
 
 COPY config/open_street_map.SAMPLE.yml config/open_street_map.yml
 
