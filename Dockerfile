@@ -8,7 +8,21 @@ WORKDIR /wheelmap
 
 ADD Gemfile Gemfile
 ADD Gemfile.lock Gemfile.lock
-COPY config/database.SAMPLE.yml config/database.yml
+#COPY config/database.SAMPLE.yml config/database.yml
+# Maybe we should have config/database.DOCKER.yml instead?
+RUN echo '
+development:
+  adapter: mysql2spatial
+  encoding: utf8
+  reconnect: false
+  database: wheelmap_development
+  pool: 5
+  username: root
+  password:
+  host: db
+  port: 3306
+' >> config/database.yml
+
 COPY config/open_street_map.SAMPLE.yml config/open_street_map.yml
 
 # thanks Debian/Ubuntu for putting Magick-config in the weirdest place ever
@@ -16,8 +30,6 @@ ENV PATH $PATH:/usr/lib/x86_64-linux-gnu/ImageMagick-6.8.9/bin-Q16/
 RUN bundle install
 
 ADD . .
-
-# TODO: MySQL
 
 EXPOSE 3000
 CMD ["bundle", "exec", "rails", "server"]
