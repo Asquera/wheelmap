@@ -14,9 +14,13 @@ COPY config/open_street_map.SAMPLE.yml config/open_street_map.yml
 
 # thanks Debian/Ubuntu for putting Magick-config in the weirdest place ever
 ENV PATH $PATH:/usr/lib/x86_64-linux-gnu/ImageMagick-6.8.9/bin-Q16/
+# it'd be nice to have this be ONBUILD RUN to speed up building this container
+# but bundle install seems to die unless it's just RUN
 RUN bundle install
 
 ADD . .
+RUN bundle exec rake db:create:all db:migrate db:seed
+
 
 EXPOSE 3000
 CMD ["bundle", "exec", "rails", "server"]
