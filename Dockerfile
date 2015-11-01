@@ -8,6 +8,8 @@ WORKDIR /wheelmap
 
 ADD Gemfile Gemfile
 ADD Gemfile.lock Gemfile.lock
+
+RUN mkdir -p config
 #COPY config/database.SAMPLE.yml config/database.yml
 # Maybe we should have config/database.DOCKER.yml instead?
 RUN echo "\n\
