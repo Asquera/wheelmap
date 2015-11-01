@@ -10,17 +10,17 @@ ADD Gemfile Gemfile
 ADD Gemfile.lock Gemfile.lock
 #COPY config/database.SAMPLE.yml config/database.yml
 # Maybe we should have config/database.DOCKER.yml instead?
-RUN echo '
-development:
-  adapter: mysql2spatial
-  encoding: utf8
-  reconnect: false
-  database: wheelmap_development
-  pool: 5
-  username: root
-  password:
-  host: db
-  port: 3306' >> config/database.yml
+RUN echo "\n\
+development:\n\
+  adapter: mysql2spatial\n\
+  encoding: utf8\n\
+  reconnect: false\n\
+  database: wheelmap_development\n\
+  pool: 5\n\
+  username: root\n\
+  password:\n\
+  host: db\n\
+  port: 3306" >> config/database.yml
 
 COPY config/open_street_map.SAMPLE.yml config/open_street_map.yml
 
