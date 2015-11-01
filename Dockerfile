@@ -20,10 +20,8 @@ RUN bundle install
 
 ADD . .
 
-# allow rake to work against our DB container
-RUN echo "ActiveRecord::Tasks::DatabaseTasks::LOCAL_HOSTS << db" >> config/application.rb
+ENV RAILS_ENV development
 RUN bundle exec rake db:create:all db:migrate db:seed
-
 
 EXPOSE 3000
 CMD ["bundle", "exec", "rails", "server"]
