@@ -8,5 +8,4 @@ db:
 wheelmap:
   build: .
   links:
-   - db
    - db:db
