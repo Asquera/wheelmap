@@ -25,8 +25,5 @@ ENV RAILS_ENV development
 #RUN bundle exec rake db:create:all db:migrate db:seed
 
 EXPOSE 3000
-#CMD ["bundle", "exec", "rails", "server"]
-#debugging
-CMD ["cat" "/etc/hosts"]
-
+CMD ["bundle", "exec", "rails", "server"]
 
