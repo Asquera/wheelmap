@@ -1,5 +1,9 @@
 FROM ruby:2.2.3
-# shamelessly copied from https://github.com/docker-library/rails/blob/9fb5d2b7e0f2e7029855028e07e86ab7ec54abaa//Dockerfile
+
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends mysql \ 
+	&& rm -rf /var/lib/apt/lists/*
+
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
 
@@ -21,8 +25,8 @@ RUN bundle install
 ADD . .
 
 ENV RAILS_ENV development
-# Can't run against 'remote' environments
-#RUN bundle exec rake db:create:all db:migrate db:seed
+
+RUN bundle exec rake db:create:all db:migrate db:seed
 
 EXPOSE 3000
 CMD ["bundle", "exec", "rails", "server"]
