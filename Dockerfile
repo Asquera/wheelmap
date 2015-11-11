@@ -21,7 +21,7 @@ ADD Gemfile.lock Gemfile.lock
 COPY config/database.DOCKER.yml config/database.yml
 COPY config/open_street_map.SAMPLE.yml config/open_street_map.yml
 
-RUN bundle install --without-test
+RUN bundle install --without test
 
 ADD . .
 
