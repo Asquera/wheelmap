@@ -1,10 +1,8 @@
 FROM ruby:2.2.3
 
-RUN { \
-		echo mysql-community-server mysql-community-server/data-dir select ''; \
-		echo mysql-community-server mysql-community-server/root-pass password ''; \
-		echo mysql-community-server mysql-community-server/re-root-pass password ''; \
-		echo mysql-community-server mysql-community-server/remove-test-db select false; \
+RUN { \\
+		echo mysql-server mysql-server/root_password password 'docker'; \
+		echo mysql-server mysql-server/root_password_again password 'docker'; \
 	} | debconf-set-selections
 
 RUN apt-get update
