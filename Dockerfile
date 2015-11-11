@@ -1,8 +1,10 @@
 FROM alpine:latest
 
 RUN apk update
-RUN apk add ruby-io-console ruby-bundler mysql
+RUN apk add ruby ruby-io-console
+RUN apk add mysql git
 
+RUN gem install bundler
 RUN bundle config --global frozen 1
 
 RUN mkdir -p /wheelmap
