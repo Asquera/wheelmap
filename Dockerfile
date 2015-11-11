@@ -1,14 +1,5 @@
 FROM ruby:2.2.3
 
-RUN { \
-		echo mysql-server mysql-server/root_password password 'docker'; \
-		echo mysql-server mysql-server/root_password_again password 'docker'; \
-	} | debconf-set-selections
-
-RUN apt-get update
-RUN apt-get install -y --no-install-recommends mysql-server 
-RUN rm -rf /var/lib/apt/lists/*
-
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
 
@@ -31,7 +22,6 @@ ADD . .
 
 ENV RAILS_ENV development
 
-RUN mysqld &
 RUN bundle exec rake db:create:all db:migrate db:seed
 
 
