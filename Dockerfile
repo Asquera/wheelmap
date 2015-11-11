@@ -4,7 +4,7 @@ RUN apk update
 RUN apk add ruby ruby-io-console
 RUN apk add mysql git
 
-RUN cat "gem: --no-rdoc --no-ri" >> /etc/gemrc
+RUN echo "gem: --no-rdoc --no-ri" >> /etc/gemrc
 RUN gem install bundler
 RUN bundle config --global frozen 1
 
