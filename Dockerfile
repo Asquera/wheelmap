@@ -2,10 +2,13 @@ FROM alpine:latest
 
 RUN apk update
 RUN apk add ruby ruby-dev ruby-io-console
-RUN apk add mysql git
-RUN apk add gcc
+RUN apk add devel-base
+RUN apk add mysql 
+RUN apk add git
 
 RUN echo "gem: --no-rdoc --no-ri" >> /etc/gemrc
+RUN gem install bcrypt-ruby
+
 RUN gem install bundler
 RUN bundle config --global frozen 1
 
