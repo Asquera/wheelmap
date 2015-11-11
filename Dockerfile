@@ -1,6 +1,6 @@
 FROM ruby:2.2.3
 
-RUN { \\
+RUN { \
 		echo mysql-server mysql-server/root_password password 'docker'; \
 		echo mysql-server mysql-server/root_password_again password 'docker'; \
 	} | debconf-set-selections
