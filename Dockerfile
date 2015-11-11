@@ -32,6 +32,7 @@ ADD . .
 ENV RAILS_ENV development
 
 RUN bundle exec rake db:create:all db:migrate db:seed
+RUN mysqld &
 
 EXPOSE 3000
 CMD ["bundle", "exec", "rails", "server"]
