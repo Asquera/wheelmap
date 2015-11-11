@@ -2,26 +2,26 @@ FROM alpine:latest
 
 RUN apk update
 RUN apk add ruby ruby-dev ruby-io-console
-RUN apk add devel-base
-RUN apk add mysql 
-RUN apk add git
+RUN apk add gcc
+#RUN apk add mysql 
+#RUN apk add git
 
 RUN echo "gem: --no-rdoc --no-ri" >> /etc/gemrc
 RUN gem install bcrypt-ruby
 
-RUN gem install bundler
-RUN bundle config --global frozen 1
+#RUN gem install bundler
+#RUN bundle config --global frozen 1
 
-RUN mkdir -p /wheelmap
-WORKDIR /wheelmap
+#RUN mkdir -p /wheelmap
+#WORKDIR /wheelmap
 
-ADD Gemfile Gemfile
-ADD Gemfile.lock Gemfile.lock
+#ADD Gemfile Gemfile
+#ADD Gemfile.lock Gemfile.lock
 
-COPY config/database.DOCKER.yml config/database.yml
-COPY config/open_street_map.SAMPLE.yml config/open_street_map.yml
+#COPY config/database.DOCKER.yml config/database.yml
+#COPY config/open_street_map.SAMPLE.yml config/open_street_map.yml
 
-RUN bundle install
+#RUN bundle install
 
 ADD . .
 
