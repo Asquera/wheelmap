@@ -6,6 +6,4 @@ development:
   pool: 2
   username: root
   password: docker
-  host: db
-  port: 3306
 
