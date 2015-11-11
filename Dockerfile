@@ -1,5 +1,12 @@
 FROM ruby:2.2.3
 
+RUN { \
+		echo mysql-community-server mysql-community-server/data-dir select '/var/lib/mysql'; \
+		echo mysql-community-server mysql-community-server/root-pass password 'docker'; \
+		echo mysql-community-server mysql-community-server/re-root-pass password 'docker'; \
+		echo mysql-community-server mysql-community-server/remove-test-db select false; \
+	} | debconf-set-selections
+
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends mysql-server \ 
 	&& rm -rf /var/lib/apt/lists/*
