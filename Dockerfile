@@ -5,7 +5,7 @@ RUN apk add ruby ruby-dev ruby-io-console
 RUN apk add build-base #for ruby-bcrypt
 RUN apk add git
 RUN apk add mariadb mariadb-dev #for mysql2 extension
-
+RUN apk add libxml2-dev
 
 RUN echo "gem: --no-rdoc --no-ri" >> /etc/gemrc
 
