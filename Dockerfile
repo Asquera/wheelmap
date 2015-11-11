@@ -3,6 +3,7 @@ FROM alpine:latest
 RUN apk update
 RUN apk add ruby ruby-dev ruby-io-console
 RUN apk add gcc
+RUN apk add make
 #RUN apk add mysql 
 #RUN apk add git
 
