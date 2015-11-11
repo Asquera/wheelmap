@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 RUN apk update
-RUN apk add ruby-bundler mysql
+RUN apk add ruby-io-console ruby-bundler mysql
 
 RUN bundle config --global frozen 1
 
