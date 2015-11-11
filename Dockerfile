@@ -1,8 +1,9 @@
 FROM alpine:latest
 
 RUN apk update
-RUN apk add ruby ruby-io-console
+RUN apk add ruby ruby-dev ruby-io-console
 RUN apk add mysql git
+RUN apk add gcc
 
 RUN echo "gem: --no-rdoc --no-ri" >> /etc/gemrc
 RUN gem install bundler
