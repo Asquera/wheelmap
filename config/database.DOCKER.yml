@@ -6,5 +6,6 @@ development:
   pool: 2
   username: root
   password: docker
-  socket: /var/run/mysqld/mysqld.sock
+  host: wheelmap_db_1
+  port: 3306
 

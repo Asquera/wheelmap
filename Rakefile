@@ -33,3 +33,13 @@ rescue LoadError
 end
 
 Wheelmap::Application.load_tasks
+
+namespace :db do
+  def local_database?(config, &block)
+    if config['host'].in?(['127.0.0.1', 'localhost', 'wheelmap_db_1']) || config['host'].blank?
+      yield
+    else
+      $stderr.puts "This task only modifies local databases. #{config['database']} is on a remote host."
+    end
+  end
+end
